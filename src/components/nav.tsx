@@ -20,12 +20,12 @@ const Nav = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-pink-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-pink-100">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Heart className="w-8 h-8 text-pink-500" />
+            <Heart className="w-8 h-8 text-[#b497bd]" />
             <span className="text-xl font-medium text-gray-800">
               Sacred Space
             </span>
@@ -39,7 +39,7 @@ const Nav = () => {
                 href={item.path}
                 className={`relative py-2 px-3 transition-colors duration-200 ${
                   isActive(item.path)
-                    ? "text-pink-600 font-medium"
+                    ? "text-[#b497bd] font-medium"
                     : "text-gray-700 hover:text-pink-500"
                 }`}
               >
@@ -47,7 +47,7 @@ const Nav = () => {
                 {isActive(item.path) && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-500"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#b497bd]"
                     initial={false}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
@@ -79,7 +79,7 @@ const Nav = () => {
                 href={item.path}
                 className={`block py-3 px-4 transition-colors duration-200 ${
                   isActive(item.path)
-                    ? "text-pink-600 font-medium bg-pink-50"
+                    ? "text-[#b497bd] font-medium bg-pink-50"
                     : "text-gray-700 hover:text-pink-500 hover:bg-pink-50"
                 }`}
                 onClick={() => setIsOpen(false)}
