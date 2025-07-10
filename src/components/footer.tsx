@@ -15,7 +15,6 @@ const Footer = () => {
     <footer className="bg-gradient-to-b from-white to-pink-50/30 py-16 px-4 border-t border-pink-100">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +38,6 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
