@@ -1,68 +1,97 @@
 "use client";
-import { useState } from "react";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { Menu, X, Heart } from "lucide-react";
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "#services" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
-    { label: "Donate", href: "/donate" },
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", path: "/contact" },
+    { name: "Donate", path: "/donate" },
   ];
 
-  return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-md border-b border-pink-100">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-        <Link href="/" className="text-pink-600 font-bold text-xl">
-          Divine Serenity
-        </Link>
-        <div className="hidden md:flex gap-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-pink-700 hover:text-pink-500 transition"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-pink-600"
-        >
-          {open ? <X /> : <Menu />}
-        </button>
-      </div>
+  const isActive = (path: string) => pathname === path;
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: "auto" }}
-            exit={{ height: 0 }}
-            className="overflow-hidden md:hidden bg-white border-t border-pink-100"
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-pink-100">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <Heart className="w-8 h-8 text-pink-500" />
+            <span className="text-xl font-medium text-gray-800">
+              Sacred Space
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`relative py-2 px-3 transition-colors duration-200 ${
+                  isActive(item.path)
+                    ? "text-pink-600 font-medium"
+                    : "text-gray-700 hover:text-pink-500"
+                }`}
+              >
+                {item.name}
+                {isActive(item.path) && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-500"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-gray-700 hover:text-pink-500 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <div className="flex flex-col px-4 pb-4 space-y-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-pink-700 hover:text-pink-500 transition"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <motion.div
+          initial={false}
+          animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="md:hidden overflow-hidden bg-white border-t border-pink-100"
+        >
+          <div className="py-4 space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`block py-3 px-4 transition-colors duration-200 ${
+                  isActive(item.path)
+                    ? "text-pink-600 font-medium bg-pink-50"
+                    : "text-gray-700 hover:text-pink-500 hover:bg-pink-50"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </nav>
   );
-}
+};
+
+export default Nav;
