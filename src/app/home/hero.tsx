@@ -1,35 +1,25 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Heart, Star, Sparkles } from "lucide-react";
+import { Sparkles, Heart, Star } from "lucide-react";
+import FuzzyText from "@/components/fuzzy-text";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Floating elements */}
-      <div className="absolute inset-0 pointer-events-none">
+    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden bg-gradient-to-br from-pink-50 via-rose-100 to-white">
+      <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
-          className="absolute top-20 left-10 text-pink-200/40"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute top-30 left-10 text-[#b497bd] "
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           <Sparkles size={40} />
         </motion.div>
-
         <motion.div
-          className="absolute top-40 right-20 text-pink-200/30"
-          animate={{
-            y: [0, -15, 0],
-            rotate: [0, -5, 0],
-          }}
+          className="absolute top-40 right-20 text-[#b497bd]"
+          animate={{ y: [0, -15, 0], rotate: [0, -5, 0] }}
           transition={{
             duration: 8,
             repeat: Infinity,
@@ -39,13 +29,9 @@ export default function Hero() {
         >
           <Heart size={32} />
         </motion.div>
-
         <motion.div
-          className="absolute bottom-40 left-20 text-pink-200/35"
-          animate={{
-            y: [0, -12, 0],
-            rotate: [0, 3, 0],
-          }}
+          className="absolute bottom-40 left-20 text-[#b497bd]"
+          animate={{ y: [0, -12, 0], rotate: [0, 3, 0] }}
           transition={{
             duration: 7,
             repeat: Infinity,
@@ -55,8 +41,61 @@ export default function Hero() {
         >
           <Star size={28} />
         </motion.div>
+
+        <motion.div
+          className="absolute w-64 h-64 bg-pink-300/20 rounded-full blur-3xl"
+          style={{ top: "15%", left: "50%" }}
+          animate={{
+            scale: [1, 1.1, 1],
+            filter: [
+              "hue-rotate(0deg)",
+              "hue-rotate(90deg)",
+              "hue-rotate(0deg)",
+            ],
+            opacity: [0.6, 0.8, 0.6],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+
+        <motion.div
+          className="absolute w-80 h-80 bg-[#b497bd] rounded-full blur-[120px]"
+          style={{ bottom: "15%", left: "10%" }}
+          animate={{ opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+
+        <motion.div
+          className="absolute w-96 h-96 border-2 border-pink-100 rounded-full"
+          style={{ top: "30%", right: "-100px" }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        />
+
+        <motion.div
+          className="absolute w-80 h-80 opacity-10"
+          style={{ top: "10%", left: "10%" }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+        >
+          <img
+            src="/yoga.svg"
+            alt="chakra mandala"
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        <div className="absolute bottom-0 left-0 right-0 z-0">
+          <svg viewBox="0 0 1440 320" className="w-full">
+            <path
+              fill="#fce7f3"
+              fillOpacity="1"
+              d="M0,192L60,186.7C120,181,240,171,360,165.3C480,160,600,160,720,149.3C840,139,960,117,1080,117.3C1200,117,1320,139,1380,149.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+            />
+          </svg>
+        </div>
       </div>
 
+      {/* MAIN CONTENT */}
       <div className="container mx-auto text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -65,15 +104,20 @@ export default function Hero() {
           className="space-y-8"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-light text-gray-800 leading-tight"
+            className="cursive text-5xl md:text-7xl font-light spirit leading-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            Find Your
-            <span className="block bg-gradient-to-r from-pink-300 to-rose-400 bg-clip-text text-transparent font-medium">
-              Inner Peace
-            </span>
+            Welcome to the Temple of the
+            <motion.div
+              className="cursive mx-auto justify-center flex"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <FuzzyText baseIntensity={0.06}>Awakening Heart 💖</FuzzyText>
+            </motion.div>
           </motion.h1>
 
           <motion.p
@@ -92,25 +136,36 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-pink-300 to-rose-400 hover:from-pink-400 hover:to-rose-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-3 text-lg glow-animation"
-            >
-              Start Your Journey
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-pink-300 text-pink-600 hover:bg-pink-50 rounded-full px-8 py-3 text-lg transition-all duration-300"
-            >
-              Learn More
-            </Button>
+            <Link href="/services">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-pink-300 to-[#b497bd] hover:from-pink-400 hover:to-[#b497bd] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-3 text-lg glow-animation"
+                onClick={() => {
+                  const section = document.getElementById("services");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Start Your Journey
+              </Button>
+            </Link>
+
+            <a href="mailto:contact@templeofawakenings.com">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-[#b497bd] text-[#b497bd] hover:bg-pink-50 rounded-full px-8 py-3 text-lg transition-all duration-300"
+              >
+                Learn More
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+      {/* Fade Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
