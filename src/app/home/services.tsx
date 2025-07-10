@@ -61,12 +61,11 @@ const ServicesSection = () => {
         >
           <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
             Sacred
-            <span className="bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent font-medium">
-              {" "}
+            <span className="bg-gradient-to-r from-pink-400 to-[#b497bd] bg-clip-text text-transparent font-medium">
               Services
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-[#b497bd] max-w-2xl mx-auto">
             Explore our holistic approaches to spiritual healing and personal
             transformation
           </p>
@@ -90,9 +89,9 @@ const ServicesSection = () => {
               }}
             >
               <Card className="h-full bg-white border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden">
-                <CardContent className="p-8 text-center h-full flex flex-col">
+                <CardContent className="p-8 text-center h-full flex flex-col pt-6">
                   <motion.div
-                    className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center`}
+                    className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-pink-200 to-[#b497bd] flex items-center justify-center`}
                     whileHover={{
                       rotate: 360,
                       scale: 1.1,
@@ -115,7 +114,7 @@ const ServicesSection = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <button className="text-pink-500 hover:text-pink-600 font-medium transition-colors duration-200">
+                    <button className="text-[#b497bd] hover:text-pink-600 font-medium transition-colors duration-200">
                       Learn More →
                     </button>
                   </motion.div>
