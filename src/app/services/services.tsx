@@ -72,8 +72,8 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/30 to-rose-50/50 pt-20">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50/30 to-rose-50/50 pt-30">
+      <div className="container mx-auto px-4 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ const Services = () => {
         >
           <h1 className="text-5xl md:text-6xl font-light text-gray-800 mb-6">
             Our
-            <span className="bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-gradient-to-r from-pink-400 to-[#b497bd] bg-clip-text text-transparent font-medium">
               {" "}
               Services
             </span>
@@ -112,7 +112,7 @@ const Services = () => {
               <Card className="h-full bg-white border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden">
                 <CardHeader className="text-center">
                   <motion.div
-                    className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center`}
+                    className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-pink-200 to-[#b497bd] flex items-center justify-center`}
                     whileHover={{
                       rotate: 360,
                       scale: 1.1,
@@ -131,20 +131,7 @@ const Services = () => {
                     {service.description}
                   </p>
 
-                  <div className="flex items-center justify-center space-x-4 mb-6 text-sm text-gray-500">
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{service.duration}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-4 h-4 text-yellow-500" />
-                      <span className="text-lg font-semibold text-pink-600">
-                        {service.price}
-                      </span>
-                    </div>
-                  </div>
-
-                  <Button className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white">
+                  <Button className="w-full bg-gradient-to-r from-pink-500 to-[#b497bd] hover:from-pink-600 hover:to-[#b497bd] text-white">
                     Book Session
                   </Button>
                 </CardContent>

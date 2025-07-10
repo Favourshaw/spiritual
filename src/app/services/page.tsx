@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const page = () => {
   return (
     <motion.div
-      className="min-h-screen overflow-hidden pt-16"
+      className="min-h-screen overflow-hidden "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

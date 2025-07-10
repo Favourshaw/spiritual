@@ -12,7 +12,7 @@ const BackgroundMusic = () => {
 
   // Using a royalty-free ambient spiritual music URL
   // In a real project, you'd host your own audio file
-  const musicUrl = "https://www.soundjay.com/misc/sounds/meditation-bell.mp3";
+  const musicUrl = "/music.mp3";
 
   useEffect(() => {
     if (audioRef.current) {
@@ -66,7 +66,7 @@ const BackgroundMusic = () => {
                   exit={{ scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Pause className="w-4 h-4 text-pink-600" />
+                  <Pause className="w-4 h-4 text-[#b497bd]" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -76,7 +76,7 @@ const BackgroundMusic = () => {
                   exit={{ scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Play className="w-4 h-4 text-pink-600" />
+                  <Play className="w-4 h-4 text-[#b497bd]" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -97,7 +97,7 @@ const BackgroundMusic = () => {
                   exit={{ scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <VolumeX className="w-4 h-4 text-pink-600" />
+                  <VolumeX className="w-4 h-4 text-[#b497bd]" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -107,14 +107,13 @@ const BackgroundMusic = () => {
                   exit={{ scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Volume2 className="w-4 h-4 text-pink-600" />
+                  <Volume2 className="w-4 h-4 text-[#b497bd]" />
                 </motion.div>
               )}
             </AnimatePresence>
           </Button>
         </div>
 
-        {/* Volume Slider - appears on hover */}
         <motion.div
           className="absolute bottom-full right-0 mb-2 bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg border border-pink-100"
           initial={{ opacity: 0, y: 10 }}
@@ -133,21 +132,15 @@ const BackgroundMusic = () => {
         </motion.div>
       </motion.div>
 
-      {/* Hidden audio element */}
       <audio
         ref={audioRef}
         preload="metadata"
         onEnded={() => setIsPlaying(false)}
       >
-        {/* For demo purposes, we'll create a simple tone. In production, use actual spiritual music */}
-        <source
-          src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DDolkWCTOPzfKiUBQJCo3A6+aDLAYZdNLz1JA9CRFlv+j8xmgWFxJWpOX6umEbCypzwO3Hm0UWC0qo8eWYSAoNa7ro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro/7VkHgAJaLro"
-          type="audio/wav"
-        />
+        <source src="/music.mp3" type="audio/wav" />
         Your browser does not support the audio element.
       </audio>
 
-      {/* CSS styles for slider */}
       <style>
         {`
           .slider::-webkit-slider-thumb {
