@@ -100,11 +100,11 @@ const TestimonialsSection = () => {
         >
           <h2 className="text-5xl md:text-6xl font-light text-gray-800 mb-4">
             What Our{" "}
-            <span className="bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent font-semibold">
+            <span className="bg-gradient-to-r from-pink-400 to-[#b497bd] bg-clip-text text-transparent font-semibold">
               Clients Say
             </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-[#b497bd] max-w-2xl mx-auto">
             Testimonials from those whose spirits were uplifted by our healing
             services.
           </p>
@@ -127,9 +127,6 @@ const TestimonialsSection = () => {
               >
                 <Card className="bg-white/80 border border-pink-100 shadow-2xl rounded-3xl backdrop-blur-xl transition-transform hover:scale-[1.015] p-6">
                   <CardContent className="p-10 flex flex-col items-center text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-rose-300 rounded-full flex items-center justify-center text-3xl shadow-md">
-                      {testimonial.image}
-                    </div>
                     <h4 className="font-semibold text-gray-800 text-xl tracking-tight">
                       {testimonial.name}
                     </h4>
@@ -138,7 +135,7 @@ const TestimonialsSection = () => {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-5 h-5 text-pink-400 fill-current"
+                          className="w-5 h-5 text-[#b497bd] fill-current"
                         />
                       ))}
                     </div>
@@ -156,13 +153,13 @@ const TestimonialsSection = () => {
             onClick={() => goTo("prev")}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-md hover:bg-pink-100"
           >
-            <ChevronLeft className="w-6 h-6 text-pink-400" />
+            <ChevronLeft className="w-6 h-6 text-[#b497bd]" />
           </button>
           <button
             onClick={() => goTo("next")}
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-md hover:bg-pink-100"
           >
-            <ChevronRight className="w-6 h-6 text-pink-400" />
+            <ChevronRight className="w-6 h-6 text-[#b497bd]" />
           </button>
         </div>
 
@@ -174,7 +171,7 @@ const TestimonialsSection = () => {
               key={i}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 Math.floor(index / (isMobile ? 1 : 2)) === i
-                  ? "bg-pink-500 scale-110"
+                  ? "bg-[#b497bd] scale-110"
                   : "bg-pink-200"
               }`}
               onClick={() => setIndex(i * (isMobile ? 1 : 2))}
