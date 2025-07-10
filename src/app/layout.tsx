@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased border-border bg-gradient-to-br from-white via-pink-50/30 to-rose-50/50 text-foreground min-h-screen`}
       >
         <SplashCursor />
         {children}

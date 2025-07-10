@@ -1,6 +1,95 @@
 @import "tailwindcss";
 
+:root {
+  --background: 0 0% 100%;
+  --foreground: 345 15% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 345 15% 15%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 345 15% 15%;
+
+  --primary: 340 25% 85%;
+  --primary-foreground: 345 15% 15%;
+
+  --secondary: 345 25% 96%;
+  --secondary-foreground: 345 15% 15%;
+
+  --muted: 345 15% 96%;
+  --muted-foreground: 345 10% 45%;
+
+  --accent: 340 30% 92%;
+  --accent-foreground: 345 15% 15%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 345 20% 90%;
+  --input: 345 20% 90%;
+  --ring: 340 25% 85%;
+
+  --radius: 0.75rem;
+
+  /* Custom spiritual colors */
+  --spiritual-pink: 340 25% 85%;
+  --spiritual-pink-light: 340 20% 95%;
+  --spiritual-pink-dark: 340 30% 75%;
+  --spiritual-white: 0 0% 100%;
+  --spiritual-cream: 45 20% 98%;
+}
+
 body {
-  @apply bg-white text-gray-800 font-light;
-  font-family: "Cormorant Garamond", serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom spiritual animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.2);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.breathe-animation {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* Background music controls */
+.music-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
