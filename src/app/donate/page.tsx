@@ -5,8 +5,10 @@ import { Heart, Gift, Star, Users, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Nav from "@/components/nav";
+import DonationModal from "./modal";
 
 const Donate = () => {
+  const [showModal, setShowModal] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(25);
   const [customAmount, setCustomAmount] = useState("");
   const [donationType, setDonationType] = useState<"one-time" | "monthly">(
@@ -26,13 +28,13 @@ const Donate = () => {
       icon: Users,
       title: "Community Workshops",
       description: "Support group meditation and wellness workshops",
-      color: "from-rose-400 to-pink-500",
+      color: "from-rose-400 to-[#b497bd]",
     },
     {
       icon: Gift,
       title: "Scholarship Program",
       description: "Help make spiritual guidance accessible to everyone",
-      color: "from-pink-500 to-rose-400",
+      color: "from-[#b497bd] to-rose-400",
     },
     {
       icon: Sparkles,
@@ -55,7 +57,7 @@ const Donate = () => {
   const handleDonate = () => {
     const amount = customAmount ? parseFloat(customAmount) : selectedAmount;
     console.log(`Donating $${amount} as ${donationType} donation`);
-    // Handle donation processing here
+    setShowModal(false);
   };
 
   return (
@@ -71,18 +73,22 @@ const Donate = () => {
           >
             <h1 className="text-5xl md:text-6xl font-light text-gray-800 mb-6">
               Support Our
-              <span className="bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent font-medium">
+              <span className="bg-gradient-to-r from-pink-400 to-[#b497bd] bg-clip-text text-transparent font-medium">
                 {" "}
                 Mission
               </span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your generous contribution helps us continue providing spiritual
-              healing and guidance to our community. Every donation, no matter
-              the size, makes a meaningful difference.
+            <p className="text-xl text-[#b497bd] max-w-3xl mx-auto">
+              <i>
+                {" "}
+                Every breath you take is a sacred gift; every heartbeat a
+                whisper of the divine. In this chaotic world, the Temple stands
+                as a sanctuary — a beacon of hope, healing, and transformation.
+                But to keep this sacred flame burning, we need your love, your
+                faith, your generosity.
+              </i>
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Donation Form */}
             <motion.div
@@ -93,37 +99,28 @@ const Donate = () => {
               <Card className="bg-white border-pink-100 shadow-xl rounded-2xl">
                 <CardHeader>
                   <CardTitle className="text-2xl font-medium text-gray-800 text-center flex items-center justify-center space-x-2">
-                    <Heart className="w-6 h-6 text-pink-500" />
+                    <Heart className="w-6 h-6 text-[#b497bd]" />
                     <span>Make a Donation</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8">
                   {/* Donation Type */}
                   <div className="mb-8">
-                    <h3 className="text-lg font-medium text-gray-800 mb-4">
-                      Donation Type
-                    </h3>
                     <div className="flex space-x-4">
-                      <button
-                        onClick={() => setDonationType("one-time")}
-                        className={`flex-1 py-3 px-4 rounded-lg border-2 transition-all duration-200 ${
-                          donationType === "one-time"
-                            ? "border-pink-500 bg-pink-50 text-pink-700"
-                            : "border-gray-200 text-gray-600 hover:border-pink-300"
-                        }`}
-                      >
-                        One-time
-                      </button>
-                      <button
-                        onClick={() => setDonationType("monthly")}
-                        className={`flex-1 py-3 px-4 rounded-lg border-2 transition-all duration-200 ${
-                          donationType === "monthly"
-                            ? "border-pink-500 bg-pink-50 text-pink-700"
-                            : "border-gray-200 text-gray-600 hover:border-pink-300"
-                        }`}
-                      >
-                        Monthly
-                      </button>
+                      <b>
+                        <i className="text-[#b497bd]  text-lg">
+                          Imagine the countless souls who have found light in
+                          their darkest hours, who have felt the warmth of
+                          healing when all seemed lost. Your donation is more
+                          than just a gift — it’s a lifeline for those searching
+                          for peace, for purpose, for awakening. With your help,
+                          we can continue to hold space for miracles, for
+                          journeys of the spirit, and for hearts to heal. Give
+                          not just with your hands, but with your heart — and
+                          witness the power of your compassion ripple through
+                          eternity.
+                        </i>
+                      </b>
                     </div>
                   </div>
 
@@ -139,7 +136,7 @@ const Donate = () => {
                           onClick={() => handleAmountSelect(amount)}
                           className={`py-3 px-4 rounded-lg border-2 transition-all duration-200 ${
                             selectedAmount === amount
-                              ? "border-pink-500 bg-pink-50 text-pink-700"
+                              ? "border-[#b497bd] bg-pink-50 text-pink-700"
                               : "border-gray-200 text-gray-600 hover:border-pink-300"
                           }`}
                         >
@@ -161,15 +158,15 @@ const Donate = () => {
                           value={customAmount}
                           onChange={handleCustomAmountChange}
                           placeholder="0.00"
-                          className="w-full pl-8 pr-4 py-3 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                          className="w-full pl-8 pr-4 py-3 border border-pink-200 rounded-lg focus:ring-2 focus:ring-[#b497bd] focus:border-transparent transition-all duration-200"
                         />
                       </div>
                     </div>
                   </div>
 
                   <Button
-                    onClick={handleDonate}
-                    className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white py-4 rounded-lg transition-all duration-200 text-lg font-medium"
+                    onClick={() => setShowModal(true)}
+                    className="w-full bg-gradient-to-r from-[#b497bd] to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white py-4 rounded-lg transition-all duration-200 text-lg font-medium"
                   >
                     Donate ${customAmount || selectedAmount}{" "}
                     {donationType === "monthly" ? "Monthly" : "Now"}
@@ -207,7 +204,7 @@ const Donate = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 >
-                  <Card className="bg-white border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl">
+                  <Card className="bg-white border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl pt-6">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <div
@@ -249,6 +246,15 @@ const Donate = () => {
                 </Card>
               </motion.div>
             </motion.div>
+          </div>{" "}
+          <div>
+            <DonationModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              customAmount={customAmount}
+              selectedAmount={selectedAmount}
+              donationType={donationType}
+            />
           </div>
         </div>
       </div>
