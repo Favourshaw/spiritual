@@ -37,10 +37,19 @@
   --spiritual-pink-dark: 340 30% 75%;
   --spiritual-white: 0 0% 100%;
   --spiritual-cream: 45 20% 98%;
+  --color-spirit: #b497bd; /* Lavender */
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.cursive {
+  font-family: "Brush Script MT", cursive;
+}
+
+.spirit {
+  color: var(--color-spirit);
 }
 
 /* Custom spiritual animations */
