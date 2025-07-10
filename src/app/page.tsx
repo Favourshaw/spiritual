@@ -7,8 +7,10 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <MusicPlayer />
+
       <main className="pt-20">
+        {" "}
+        <MusicPlayer />
         <Hero />
         <section id="services"> {/* Your services section here */}</section>
         <section id="testimonials">
