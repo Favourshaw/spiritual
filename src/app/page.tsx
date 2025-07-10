@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Testimonials from "@/components/testimonial";
 import ServicesSection from "./home/services";
 import Footer from "@/components/footer";
+import TestimonialsSection from "./home/testimonials";
 
 export default function HomePage() {
   return (
@@ -22,7 +23,7 @@ export default function HomePage() {
         <main>
           <Hero />
           <ServicesSection />
-          <Testimonials />
+          <TestimonialsSection />
         </main>
 
         <Footer />
