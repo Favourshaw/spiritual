@@ -7,15 +7,29 @@ import { Button } from "@/components/ui/button";
 const BackgroundMusic = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement>(null);
-
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-      audioRef.current.loop = true;
-    }
-  }, [volume]);
+    const enableAudio = () => {
+      if (audioRef.current && !isPlaying) {
+        audioRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+            window.removeEventListener("click", enableAudio);
+          })
+          .catch((err) => {
+            console.log("Play failed", err);
+          });
+      }
+    };
+
+    window.addEventListener("click", enableAudio);
+
+    return () => {
+      window.removeEventListener("click", enableAudio);
+    };
+  }, []);
 
   const togglePlay = () => {
     if (audioRef.current) {
