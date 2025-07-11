@@ -10,8 +10,6 @@ const BackgroundMusic = () => {
   const [volume, setVolume] = useState(0.3);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Using a royalty-free ambient spiritual music URL
-  // In a real project, you'd host your own audio file
   const musicUrl = "/music.mp3";
 
   useEffect(() => {
@@ -27,7 +25,6 @@ const BackgroundMusic = () => {
         audioRef.current.pause();
       } else {
         audioRef.current.play().catch(() => {
-          // Handle autoplay restrictions
           console.log("Autoplay prevented by browser");
         });
       }

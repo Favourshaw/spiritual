@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SplashCursor from "@/components/splash-cursor";
+import BackgroundMusic from "@/components/music-player";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased border-border overflow-x-hidden bg-gradient-to-br from-[#b497bd] via-pink-50/30 to-white text-foreground min-h-screen`}
       >
         <SplashCursor />
+        <BackgroundMusic />
         {children}
       </body>
     </html>

@@ -19,7 +19,6 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* Main Content */}
         <main>
           <Hero />
           <ServicesSection />
@@ -28,10 +27,6 @@ export default function HomePage() {
 
         <Footer />
 
-        {/* Background Music Controls */}
-        <MusicPlayer />
-
-        {/* Floating ambient elements */}
         <div className="fixed inset-0 pointer-events-none z-0">
           <motion.div
             className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#50245e] rounded-full"
