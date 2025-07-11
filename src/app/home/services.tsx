@@ -5,10 +5,39 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const services = [
   {
+    icon: Sparkles,
+    title: "Abundance Activation",
+    description:
+      "Clear money blocks and activate your energy field for wealth and opportunity attraction.",
+    duration: "60 minutes",
+    price: "$110",
+    color: "from-yellow-200 to-pink-300",
+  },
+  {
+    icon: Sun,
+    title: "Prosperity Alignment Session",
+    description:
+      "Align your chakras and subconscious with financial flow and business success.",
+    duration: "75 minutes",
+    price: "$125",
+    color: "from-amber-200 to-pink-300",
+  },
+  {
+    icon: Moon,
+    title: "Money Manifestation Coaching",
+    description:
+      "Receive spiritual coaching focused on intention setting, visualization, and manifesting income.",
+    duration: "90 minutes",
+    price: "$140",
+    color: "from-rose-100 to-yellow-200",
+  },
+  {
     icon: Heart,
     title: "Energy Healing",
     description:
       "Restore balance and harmony through gentle energy work and chakra alignment.",
+    duration: "60 minutes",
+    price: "$85",
     color: "from-pink-200 to-rose-300",
   },
   {
@@ -16,6 +45,8 @@ const services = [
     title: "Meditation Guidance",
     description:
       "Learn mindfulness techniques and discover inner peace through guided meditation.",
+    duration: "45 minutes",
+    price: "$65",
     color: "from-rose-200 to-pink-300",
   },
   {
@@ -23,6 +54,8 @@ const services = [
     title: "Spiritual Counseling",
     description:
       "Navigate life challenges with spiritual wisdom and compassionate guidance.",
+    duration: "90 minutes",
+    price: "$120",
     color: "from-pink-300 to-rose-200",
   },
   {
@@ -30,6 +63,8 @@ const services = [
     title: "Crystal Therapy",
     description:
       "Harness the healing power of crystals to cleanse and energize your aura.",
+    duration: "75 minutes",
+    price: "$95",
     color: "from-rose-300 to-pink-200",
   },
   {
@@ -37,6 +72,8 @@ const services = [
     title: "Reiki Sessions",
     description:
       "Experience deep relaxation and healing through traditional Japanese Reiki.",
+    duration: "60 minutes",
+    price: "$80",
     color: "from-pink-200 to-rose-300",
   },
   {
@@ -44,13 +81,17 @@ const services = [
     title: "Aromatherapy",
     description:
       "Enhance your wellbeing with therapeutic essential oils and sacred scents.",
+    duration: "50 minutes",
+    price: "$70",
     color: "from-rose-200 to-pink-300",
   },
+
+  // 🧿 Financial / Abundance Services
 ];
 
 const ServicesSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-white to-pink-50/30">
+    <section className="py-20 px-4 bg-gradient-to-t from-white to-pink-50/30">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
