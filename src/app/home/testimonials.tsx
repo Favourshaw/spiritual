@@ -8,6 +8,126 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
+    name: "Nina Patel",
+    role: "Realtor",
+    content:
+      "After working with the temple’s abundance meditations, I closed three real estate deals in one week. My finances are flowing like never before!",
+    rating: 5,
+    image: "💰",
+  },
+  {
+    name: "Brian Okafor",
+    role: "Marketing Consultant",
+    content:
+      "I cleared deep limiting beliefs around money with their energy sessions. My income doubled in just two months.",
+    rating: 5,
+    image: "💼",
+  },
+  {
+    name: "Yasmin El-Khoury",
+    role: "Life Coach",
+    content:
+      "Their sacred abundance rituals shifted my entire money mindset. Opportunities and clients keep pouring in.",
+    rating: 5,
+    image: "🌟",
+  },
+  {
+    name: "Carlos Rivera",
+    role: "Freelancer",
+    content:
+      "Thanks to their manifestation guidance, I now earn more than I did at my 9–5. I'm free and thriving.",
+    rating: 5,
+    image: "📈",
+  },
+  {
+    name: "Amara Jones",
+    role: "Holistic Therapist",
+    content:
+      "Spiritual coaching helped me align with purpose and profit. I’m now booked out for months and financially stable.",
+    rating: 5,
+    image: "💎",
+  },
+  {
+    name: "Liam Nguyen",
+    role: "App Developer",
+    content:
+      "I gained not just inner peace but financial clarity. I landed my dream job after a guided session.",
+    rating: 5,
+    image: "📲",
+  },
+  {
+    name: "Chloe Bennett",
+    role: "Fashion Designer",
+    content:
+      "Their crystal abundance grids and rituals opened the door to new contracts and income streams. I feel empowered.",
+    rating: 5,
+    image: "👗",
+  },
+  {
+    name: "Jonathan Lee",
+    role: "Investor",
+    content:
+      "After attending just two abundance ceremonies, I made my most successful financial investment to date.",
+    rating: 5,
+    image: "🧘‍♂️",
+  },
+  {
+    name: "Elena Morozova",
+    role: "Healer",
+    content:
+      "The emotional healing helped me raise my vibration. I’m finally attracting abundance without burnout.",
+    rating: 5,
+    image: "🌈",
+  },
+  {
+    name: "Noah Anderson",
+    role: "Photographer",
+    content:
+      "Every session unlocks new levels of peace and confidence. My art now sells internationally — and effortlessly.",
+    rating: 5,
+    image: "📷",
+  },
+  {
+    name: "Priya Desai",
+    role: "Writer",
+    content:
+      "The guided soul meditations unblocked creative flow and financial prosperity. I finally landed a book deal!",
+    rating: 5,
+    image: "📚",
+  },
+  {
+    name: "Jamal Harris",
+    role: "Musician",
+    content:
+      "After years of struggle, I’ve found harmony — spiritually and financially. My music now supports my lifestyle fully.",
+    rating: 5,
+    image: "🎶",
+  },
+  {
+    name: "Lucia Moretti",
+    role: "Yoga Instructor",
+    content:
+      "The Reiki sessions helped me release fear around money. My studio now has more students than ever before.",
+    rating: 5,
+    image: "🧘‍♀️",
+  },
+  {
+    name: "Ethan Brooks",
+    role: "Tech Entrepreneur",
+    content:
+      "My startup exploded after attending their prosperity activation. The spiritual and financial gains are real.",
+    rating: 5,
+    image: "🚀",
+  },
+  {
+    name: "Zara Khalid",
+    role: "Content Creator",
+    content:
+      "I went from burnout to breakthrough. I’m earning more from my platform and feel spiritually aligned.",
+    rating: 5,
+    image: "📹",
+  },
+  {
     name: "Sarah Johnson",
     role: "Wellness Coach",
     content:
