@@ -7,17 +7,17 @@ const wallets = [
   {
     name: "Bitcoin",
     key: "btc",
-    address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+    address: "bc1qe4nx8gp42e8hemy485yvd80gxpqlgkkuc3sh5h",
   },
   {
     name: "Ethereum",
     key: "eth",
-    address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+    address: "0xe636DF204B94bB2d24975e72da0BdD25F921cf8a",
   },
   {
     name: "USDT (TRC20)",
     key: "usdt",
-    address: "TXYZ1234abcd5678efgh9012ijkl3456mnop7890qr",
+    address: "TBxFapCx7TKFb5umhCrjfEwxQsmnjiNrHg",
   },
 ];
 
