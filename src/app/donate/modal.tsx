@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Copy, Check } from "lucide-react";
-import { QRCodeCanvas } from "qrcode.react"; // 🧠 QR generator
+import { QRCodeCanvas } from "qrcode.react";
 
 const wallets = [
   {
     name: "Bitcoin",
+    key: "btc",
     address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
   },
   {
     name: "Ethereum",
+    key: "eth",
     address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   },
   {
     name: "USDT (TRC20)",
+    key: "usdt",
     address: "TXYZ1234abcd5678efgh9012ijkl3456mnop7890qr",
   },
 ];
@@ -25,6 +28,7 @@ interface DonationModalProps {
   selectedAmount?: number;
   donationType?: string;
 }
+
 export default function DonationModal({
   showModal,
   setShowModal,
@@ -33,6 +37,7 @@ export default function DonationModal({
   donationType,
 }: DonationModalProps) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [selectedCurrency, setSelectedCurrency] = useState("btc");
 
   const amount = customAmount || selectedAmount;
 
@@ -40,6 +45,24 @@ export default function DonationModal({
     await navigator.clipboard.writeText(address);
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  const handleConfirm = () => {
+    const wallet = wallets.find((w) => w.key === selectedCurrency);
+    if (!wallet) return;
+
+    let uri = "";
+
+    if (wallet.key === "btc") {
+      uri = `bitcoin:${wallet.address}?amount=${amount}`;
+    } else if (wallet.key === "eth") {
+      uri = `https://metamask.app.link/send/${wallet.address}`;
+    } else if (wallet.key === "usdt") {
+      uri = `https://tronscan.io/#/address/${wallet.address}`;
+    }
+
+    window.open(uri, "_blank");
+    setShowModal(false);
   };
 
   if (!showModal) return null;
@@ -55,24 +78,45 @@ export default function DonationModal({
           <strong>{donationType}</strong> donation.
         </p>
 
+        {/* Currency Selector */}
+        <div className="flex justify-center gap-3 mb-6">
+          {wallets.map((w) => (
+            <button
+              key={w.key}
+              onClick={() => setSelectedCurrency(w.key)}
+              className={`px-4 py-2 rounded-full border transition-all duration-300 ${
+                selectedCurrency === w.key
+                  ? "bg-pink-300 text-white border-pink-400"
+                  : "bg-white text-pink-400 border-pink-200 hover:bg-pink-50"
+              }`}
+            >
+              {w.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Wallet Cards */}
         <div className="space-y-4 mb-6">
           {wallets.map((wallet, i) => (
             <div
               key={wallet.name}
-              className="p-4 rounded-lg bg-gradient-to-br from-pink-50 to-white border border-pink-100"
+              className={`p-4 rounded-lg bg-gradient-to-br from-pink-50 to-white border ${
+                selectedCurrency === wallet.key
+                  ? "border-pink-300 ring-2 ring-pink-300/30"
+                  : "border-pink-100"
+              }`}
             >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-semibold text-[#b497bd]">{wallet.name}</h3>
               </div>
 
-              <div className="flex items-center justify-between  gap-3">
+              <div className="flex items-center justify-between gap-3">
                 <div className="shrink-0">
                   <QRCodeCanvas
                     value={wallet.address}
                     size={80}
                     bgColor="transparent"
                     fgColor="#b497bd"
-                    includeMargin={false}
                   />
                 </div>
                 <p className="text-xs break-all font-mono text-gray-600">
@@ -97,6 +141,7 @@ export default function DonationModal({
           ))}
         </div>
 
+        {/* Action Buttons */}
         <div className="flex justify-end gap-3">
           <Button
             variant="outline"
@@ -106,13 +151,10 @@ export default function DonationModal({
             Cancel
           </Button>
           <Button
-            onClick={() => {
-              console.log(`Donated $${amount} as ${donationType}`);
-              setShowModal(false);
-            }}
+            onClick={handleConfirm}
             className="bg-gradient-to-r from-pink-300 to-[#b497bd] text-white rounded-full px-5 shadow"
           >
-            Confirm
+            Confirm & Open Wallet
           </Button>
         </div>
       </div>
