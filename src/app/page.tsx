@@ -1,9 +1,8 @@
 "use client";
-import MusicPlayer from "@/components/music-player";
+
 import Navbar from "@/components/nav";
 import Hero from "./home/hero";
 import { motion } from "framer-motion";
-import Testimonials from "@/components/testimonial";
 import ServicesSection from "./home/services";
 import Footer from "@/components/footer";
 import TestimonialsSection from "./home/testimonials";

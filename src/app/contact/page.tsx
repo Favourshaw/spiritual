@@ -40,8 +40,8 @@ export default function ContactUs() {
             Contact Us
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            We'd love to hear from you. Send us a message and we’ll get back to
-            you.
+            We&apos;d love to hear from you. Send us a message and we’ll get
+            back to you.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">

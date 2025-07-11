@@ -30,7 +30,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-gray-700 italic">"{t.text}"</p>
+            <p className="text-gray-700 italic">&apos;{t.text}&apos;</p>
             <p className="mt-4 font-semibold text-pink-700">– {t.name}</p>
           </motion.div>
         ))}

@@ -5,6 +5,7 @@ import { Sparkles, Heart, Star } from "lucide-react";
 import FuzzyText from "@/components/fuzzy-text";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -77,9 +78,11 @@ export default function Hero() {
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
         >
-          <img
+          <Image
             src="/yoga.svg"
             alt="chakra mandala"
+            width={500} // adjust width and height as needed
+            height={500}
             className="w-full h-full object-contain"
           />
         </motion.div>

@@ -10,8 +10,6 @@ const BackgroundMusic = () => {
   const [volume, setVolume] = useState(0.3);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const musicUrl = "/music.mp3";
-
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;

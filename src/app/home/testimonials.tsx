@@ -141,7 +141,7 @@ const TestimonialsSection = () => {
                     </div>
                     <Quote className="w-8 h-8 text-pink-300 opacity-40" />
                     <p className="text-gray-600 italic leading-relaxed">
-                      "{testimonial.content.slice(0, 120)}..."
+                      &apos;{testimonial.content.slice(0, 120)}...&apos;
                     </p>
                   </CardContent>
                 </Card>

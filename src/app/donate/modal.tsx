@@ -74,7 +74,7 @@ export default function DonationModal({
           Confirm Donation
         </h2>
         <p className="text-gray-600 mb-5 text-center">
-          You're about to donate <strong>${amount}</strong> as a{" "}
+          You&apos;re about to donate <strong>${amount}</strong> as a{" "}
           <strong>{donationType}</strong> donation.
         </p>
 
