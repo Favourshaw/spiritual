@@ -13,8 +13,10 @@ const Nav = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: "Contact", path: "/contact" },
+
     { name: "Donate", path: "/donate" },
+    { name: "Book a Session", path: "/book" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => pathname === path;
