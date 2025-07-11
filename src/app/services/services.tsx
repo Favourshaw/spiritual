@@ -7,6 +7,33 @@ import Link from "next/link";
 
 const services = [
   {
+    icon: Sparkles,
+    title: "Abundance Activation",
+    description:
+      "Clear money blocks and activate your energy field for wealth and opportunity attraction.",
+    duration: "60 minutes",
+    price: "$110",
+    color: "from-yellow-200 to-pink-300",
+  },
+  {
+    icon: Sun,
+    title: "Prosperity Alignment Session",
+    description:
+      "Align your chakras and subconscious with financial flow and business success.",
+    duration: "75 minutes",
+    price: "$125",
+    color: "from-amber-200 to-pink-300",
+  },
+  {
+    icon: Moon,
+    title: "Money Manifestation Coaching",
+    description:
+      "Receive spiritual coaching focused on intention setting, visualization, and manifesting income.",
+    duration: "90 minutes",
+    price: "$140",
+    color: "from-rose-100 to-yellow-200",
+  },
+  {
     icon: Heart,
     title: "Energy Healing",
     description:
@@ -60,6 +87,8 @@ const services = [
     price: "$70",
     color: "from-rose-200 to-pink-300",
   },
+
+  // 🧿 Financial / Abundance Services
 ];
 
 const Services = () => {
