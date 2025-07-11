@@ -37,9 +37,6 @@ interface Pointer {
   color: ColorRGB;
 }
 
-interface OESTextureHalfFloat {
-  HALF_FLOAT_OES: GLenum;
-}
 function pointerPrototype(): Pointer {
   return {
     id: -1,
@@ -53,6 +50,11 @@ function pointerPrototype(): Pointer {
     moved: false,
     color: { r: 0, g: 0, b: 0 },
   };
+}
+
+interface GLFormatObject {
+  internalFormat: number;
+  format: number;
 }
 
 export default function SplashCursor({
@@ -152,35 +154,27 @@ export default function SplashCursor({
 
       const halfFloatTexType = isWebGL2
         ? (gl as WebGL2RenderingContext).HALF_FLOAT
-        : (halfFloat && (halfFloat as OESTextureHalfFloat).HALF_FLOAT_OES) || 0;
+        : (halfFloat as { HALF_FLOAT_OES: number } | null)?.HALF_FLOAT_OES ?? 0;
 
-      let formatRGBA: GLenum;
-      let formatRG: GLenum;
-      let formatR: GLenum;
+      let formatRGBA: GLFormatObject | null = null;
+      let formatRG: GLFormatObject | null = null;
+      let formatR: GLFormatObject | null = null;
 
       if (isWebGL2) {
+        const gl2 = gl as WebGL2RenderingContext;
+
         formatRGBA = getSupportedFormat(
-          gl,
-          (gl as WebGL2RenderingContext).RGBA16F,
-          gl.RGBA,
+          gl2,
+          gl2.RGBA16F,
+          gl2.RGBA,
           halfFloatTexType
         );
-        formatRG = getSupportedFormat(
-          gl,
-          (gl as WebGL2RenderingContext).RG16F,
-          (gl as WebGL2RenderingContext).RG,
-          halfFloatTexType
-        );
-        formatR = getSupportedFormat(
-          gl,
-          (gl as WebGL2RenderingContext).R16F,
-          (gl as WebGL2RenderingContext).RED,
-          halfFloatTexType
-        );
+        formatRG = getSupportedFormat(gl2, gl2.RG16F, gl2.RG, halfFloatTexType);
+        formatR = getSupportedFormat(gl2, gl2.R16F, gl2.RED, halfFloatTexType);
       } else {
         formatRGBA = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
-        formatRG = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
-        formatR = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
+        formatRG = formatRGBA;
+        formatR = formatRGBA;
       }
 
       return {
@@ -895,6 +889,10 @@ export default function SplashCursor({
       const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
       gl.disable(gl.BLEND);
 
+      if (!rgba || !rg || !r) {
+        throw new Error("WebGL does not support the required texture formats.");
+      }
+
       if (!dye) {
         dye = createDoubleFBO(
           dyeRes.width,
@@ -945,6 +943,7 @@ export default function SplashCursor({
         texType,
         gl.NEAREST
       );
+
       curl = createFBO(
         simRes.width,
         simRes.height,
@@ -953,6 +952,7 @@ export default function SplashCursor({
         texType,
         gl.NEAREST
       );
+
       pressure = createDoubleFBO(
         simRes.width,
         simRes.height,
