@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const services = [
   {
@@ -131,9 +132,11 @@ const Services = () => {
                     {service.description}
                   </p>
 
-                  <Button className="w-full bg-gradient-to-r from-pink-500 to-[#b497bd] hover:from-pink-600 hover:to-[#b497bd] text-white">
-                    Book Session
-                  </Button>
+                  <Link href="/book">
+                    <Button className="w-full bg-gradient-to-r from-pink-500 to-[#b497bd] hover:from-pink-600 hover:to-[#b497bd] text-white">
+                      Book Session
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
