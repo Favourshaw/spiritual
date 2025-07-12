@@ -1,23 +1,12 @@
-"use client";
-import Footer from "@/components/footer";
-import Nav from "@/components/nav";
 import React from "react";
-import Services from "./services";
-import { motion } from "framer-motion";
+import Service from "./service";
 
-const page = () => {
+const ServicePage = () => {
   return (
-    <motion.div
-      className="min-h-screen overflow-hidden "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <Nav />
-      <Services />
-      <Footer />
-    </motion.div>
+    <div>
+      <Service />
+    </div>
   );
 };
 
-export default page;
+export default ServicePage;

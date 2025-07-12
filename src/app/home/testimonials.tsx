@@ -231,7 +231,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             {visibleTestimonials.map((testimonial, i) => (
               <motion.div
                 key={testimonial.name}
