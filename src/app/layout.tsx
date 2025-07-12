@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased border-border overflow-x-hidden bg-gradient-to-br from-[#b497bd] via-pink-50/30 to-white text-foreground min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased border-border overflow-x-hidden  text-foreground min-h-screen`}
       >
         <LoadTranslate />
         <Translator />
