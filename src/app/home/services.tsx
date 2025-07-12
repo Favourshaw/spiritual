@@ -91,7 +91,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-t from-white to-pink-50/30">
+    <section className="py-20 px-4 h-full bg-gradient-to-br from-[#b497bd] via-pink-50/30 to-white">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

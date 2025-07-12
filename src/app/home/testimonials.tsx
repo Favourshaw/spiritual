@@ -209,7 +209,7 @@ const TestimonialsSection = () => {
     : [testimonials[index], testimonials[(index + 1) % testimonials.length]];
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-t from-pink-50/30 to-white">
+    <section className="py-38 px-4 bg-gradient-to-tr from-[#b497bd] via-pink-50/30 to-white">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
