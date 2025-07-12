@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SplashCursor from "@/components/splash-cursor";
 import BackgroundMusic from "@/components/music-player";
+import Translator from "@/components/translate/translator";
+import { LoadTranslate } from "@/components/translate/load-translate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Temple of Spirituality",
+  title: "Enchanted Messenger - Spiritual Services",
   description: "Temple of the Awakening Heart 💖",
   icons: {
     icon: "/favicon.svg",
@@ -34,6 +36,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased border-border overflow-x-hidden bg-gradient-to-br from-[#b497bd] via-pink-50/30 to-white text-foreground min-h-screen`}
       >
+        <LoadTranslate />
+        <Translator />
         <SplashCursor />
         <BackgroundMusic />
         {children}
