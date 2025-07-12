@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface FlagIconProps {
@@ -22,7 +23,9 @@ export default function FlagIcon({
       {emoji}
     </span>
   ) : (
-    <img
+    <Image
+      width={20}
+      height={20}
       src={src}
       alt={alt}
       className={className}

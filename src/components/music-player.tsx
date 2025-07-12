@@ -10,12 +10,15 @@ const BackgroundMusic = () => {
   const [volume, setVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
+    const hasStarted = { current: false };
+
     const enableAudio = () => {
-      if (audioRef.current && !isPlaying) {
+      if (audioRef.current && !hasStarted.current) {
         audioRef.current
           .play()
           .then(() => {
             setIsPlaying(true);
+            hasStarted.current = true;
             window.removeEventListener("click", enableAudio);
           })
           .catch((err) => {

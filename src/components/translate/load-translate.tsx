@@ -1,25 +1,42 @@
 "use client";
 import { useEffect } from "react";
 
+// Minimal typing for google.translate.TranslateElement constructor
+interface GoogleTranslate {
+  translate: {
+    TranslateElement: new (
+      options: { pageLanguage: string; autoDisplay: boolean },
+      elementId: string
+    ) => void;
+  };
+}
+
+// Extend global Window type to include Google Translate init
+declare global {
+  interface Window {
+    googleTranslateElementInit?: () => void;
+    google?: GoogleTranslate;
+  }
+}
+
 export function LoadTranslate() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Check if script already loaded
     if (document.getElementById("google-translate-script")) return;
 
-    // Create global callback for Google Translate
-    (window as any).googleTranslateElementInit = function () {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          autoDisplay: false, // Prevent default UI, since we have custom UI
-        },
-        "google_translate_element"
-      );
+    window.googleTranslateElementInit = function () {
+      if (window.google?.translate?.TranslateElement) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            autoDisplay: false,
+          },
+          "google_translate_element"
+        );
+      }
     };
 
-    // Inject Google Translate script tag
     const script = document.createElement("script");
     script.id = "google-translate-script";
     script.src =
