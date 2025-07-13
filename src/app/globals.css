@@ -102,3 +102,9 @@ body {
   right: 20px;
   z-index: 1000;
 }
+
+.skiptranslate {
+  opacity: 0 !important ;
+  height: 0 !important ;
+  display: none !important ;
+}
