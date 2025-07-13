@@ -97,18 +97,6 @@ const languages: Language[] = [
   },
 ];
 
-declare global {
-  interface Window {
-    google?: {
-      translate: {
-        TranslateElement: {
-          new (options: unknown, element: string): unknown;
-        };
-      };
-    };
-  }
-}
-
 function setCookie(name: string, value: string, days = 365): void {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
   document.cookie = `${name}=${encodeURIComponent(
@@ -144,7 +132,9 @@ export default function Translator() {
   }, []);
 
   function changeLanguage(langCode: string): void {
-    if (!window.google) {
+    const google = window.google; // Properly typed now
+
+    if (!google) {
       console.warn("Google Translate not initialized yet");
       return;
     }

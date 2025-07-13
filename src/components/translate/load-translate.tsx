@@ -2,22 +2,8 @@
 import { useEffect } from "react";
 
 // Minimal typing for google.translate.TranslateElement constructor
-interface GoogleTranslate {
-  translate: {
-    TranslateElement: new (
-      options: { pageLanguage: string; autoDisplay: boolean },
-      elementId: string
-    ) => void;
-  };
-}
 
 // Extend global Window type to include Google Translate init
-declare global {
-  interface Window {
-    googleTranslateElementInit?: () => void;
-    google?: GoogleTranslate;
-  }
-}
 
 export function LoadTranslate() {
   useEffect(() => {
